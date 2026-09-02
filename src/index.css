@@ -1,0 +1,160 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', Inter, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-poker: 'Cinzel Decorative', 'Playfair Display', serif;
+
+  --color-navy-950: #050914;
+  --color-navy-900: #0a1024;
+  --color-navy-800: #0f1b38;
+  --color-navy-700: #17274d;
+
+  --color-gold-300: #f6e096;
+  --color-gold-400: #edd06c;
+  --color-gold-500: #d4af37;
+  --color-gold-600: #aa820a;
+  --color-gold-700: #7e5d02;
+
+  --color-ruby-500: #e11d48;
+  --color-ruby-600: #be123c;
+  --color-ruby-700: #9f1239;
+
+  --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(212, 175, 55, 0.25);
+  --shadow-card-hover: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 25px rgba(212, 175, 55, 0.45), 0 0 0 1px rgba(212, 175, 55, 0.6);
+  --shadow-card-glow-red: 0 20px 40px -10px rgba(225, 29, 72, 0.3), 0 0 20px rgba(225, 29, 72, 0.2);
+  --shadow-card-glow-blue: 0 20px 40px -10px rgba(37, 99, 235, 0.3), 0 0 20px rgba(37, 99, 235, 0.2);
+  --shadow-card-glow-green: 0 20px 40px -10px rgba(16, 185, 129, 0.3), 0 0 20px rgba(16, 185, 129, 0.2);
+  --shadow-card-glow-purple: 0 20px 40px -10px rgba(139, 92, 246, 0.3), 0 0 20px rgba(139, 92, 246, 0.2);
+}
+
+:root {
+  --bg-dark: #050814;
+  --gold-glow: rgba(212, 175, 55, 0.25);
+}
+
+body {
+  background-color: #050814;
+  color: #e2e8f0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+/* 3D Transform & Card Perspective Utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.perspective-1500 {
+  perspective: 1500px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Authentic Playing Card Borders & Backgrounds */
+.card-ivory-texture {
+  background: 
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.96) 0%, rgba(246, 241, 230, 0.98) 100%),
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.015) 0px, rgba(0,0,0,0.015) 1px, transparent 1px, transparent 2px);
+  box-shadow: 
+    inset 0 0 12px rgba(212, 175, 55, 0.2),
+    0 15px 35px -5px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(212, 175, 55, 0.5);
+}
+
+.card-dark-texture {
+  background: 
+    radial-gradient(circle at 50% 30%, #171d33 0%, #0a0e1c 100%),
+    repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 8px);
+  box-shadow: 
+    inset 0 0 20px rgba(212, 175, 55, 0.15),
+    0 20px 45px -8px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(212, 175, 55, 0.4);
+}
+
+/* Luxury Deck Back Pattern */
+.card-back-pattern {
+  background-color: #0b1126;
+  background-image: 
+    radial-gradient(#d4af37 1px, transparent 1px),
+    radial-gradient(circle at center, #1b264f 0%, #080c1d 80%);
+  background-size: 16px 16px, 100% 100%;
+}
+
+/* Metallic Gold Foil Gradients & Shimmers */
+.gold-foil-text {
+  background: linear-gradient(135deg, #fceda2 0%, #d4af37 50%, #aa820a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ruby-foil-text {
+  background: linear-gradient(135deg, #ff6b8b 0%, #e11d48 50%, #880825 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card-filigree-border {
+  position: relative;
+}
+
+.card-filigree-border::after {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+.card-filigree-border::before {
+  content: '';
+  position: absolute;
+  inset: 11px;
+  border: 0.5px dashed rgba(212, 175, 55, 0.2);
+  border-radius: 9px;
+  pointer-events: none;
+}
+
+/* Noise Overlay */
+.bg-noise {
+  background-image: radial-gradient(rgba(212, 175, 55, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050814;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d4af37;
+}
