@@ -141,7 +141,7 @@ export const PORTFOLIO_DATA = {
       suit: '♥',
       role: 'Full Stack Developer Intern',
       company: 'Extazee Software Solutions',
-      period: 'May 2025 - Jun 2025 (Also Dec 2023 - Apr 2024)',
+      period: 'May 2025 - Jun 2025',
       type: 'Internship & Project Engineering',
       description: 'Worked on building responsive multi-page web applications and integrating frontend interfaces with scalable Java Spring Boot backend services and MySQL databases.',
       keyContributions: [
