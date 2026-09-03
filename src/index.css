@@ -5,6 +5,7 @@
   --font-sans: 'Plus Jakarta Sans', Inter, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   --font-poker: 'Cinzel Decorative', 'Playfair Display', serif;
+  --font-signature: 'Great Vibes', 'Dancing Script', cursive;
 
   --color-navy-950: #050914;
   --color-navy-900: #0a1024;
@@ -23,6 +24,7 @@
 
   --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(212, 175, 55, 0.25);
   --shadow-card-hover: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 25px rgba(212, 175, 55, 0.45), 0 0 0 1px rgba(212, 175, 55, 0.6);
+  --shadow-card-glow-gold: 0 0 35px rgba(212, 175, 55, 0.45), 0 0 0 1px rgba(212, 175, 55, 0.6);
   --shadow-card-glow-red: 0 20px 40px -10px rgba(225, 29, 72, 0.3), 0 0 20px rgba(225, 29, 72, 0.2);
   --shadow-card-glow-blue: 0 20px 40px -10px rgba(37, 99, 235, 0.3), 0 0 20px rgba(37, 99, 235, 0.2);
   --shadow-card-glow-green: 0 20px 40px -10px rgba(16, 185, 129, 0.3), 0 0 20px rgba(16, 185, 129, 0.2);
@@ -141,6 +143,99 @@ body {
 
 .animate-shimmer {
   animation: shimmer 3s ease-in-out infinite;
+}
+
+/* 3D Depth Utilities */
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.font-signature {
+  font-family: 'Great Vibes', 'Dancing Script', cursive;
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(10px) rotate(-2deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 45px rgba(212, 175, 55, 0.75);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 7s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Holographic sheen overlay */
+.holographic-sheen {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 215, 0, 0.15) 25%,
+    rgba(255, 105, 180, 0.15) 50%,
+    rgba(0, 255, 255, 0.15) 75%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 200%;
+}
+
+/* Equal Ratio Playing Card Standard (2.5:3.5 Poker Proportion) */
+.card-equal-ratio {
+  aspect-ratio: 2.5 / 3.5;
+}
+
+.card-golden-bevel {
+  box-shadow: 
+    0 1px 0 1px rgba(255, 223, 128, 0.4),
+    0 8px 24px -4px rgba(0, 0, 0, 0.7),
+    0 0 25px rgba(212, 175, 55, 0.25),
+    inset 0 0 16px rgba(212, 175, 55, 0.15);
+}
+
+.card-emboss-glow {
+  filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.45));
+}
+
+@keyframes cosmic-pulse {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.08) rotate(180deg);
+  }
+}
+
+.animate-cosmic-pulse {
+  animation: cosmic-pulse 16s ease-in-out infinite;
 }
 
 /* Custom Scrollbar */

@@ -23,11 +23,11 @@ export const CertificationDeck: React.FC = () => {
           <span className="font-poker text-2xl text-amber-400">♦</span>
         </div>
 
-        <p className="text-xs md:text-sm text-slate-400 font-mono tracking-wide mb-12 text-center">
+        <p className="text-xs md:text-sm text-slate-400 font-mono tracking-wide mb-10 text-center">
           Verified Industry Credentials from Infosys, Systech & IBM SkillsBuild
         </p>
 
-        {/* 3 Collectible Mini Playing Cards */}
+        {/* 3 Collectible Mini Playing Cards (Standardized Identical Heights) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl">
           {certifications.map((cert, idx) => (
             <motion.div
@@ -35,8 +35,8 @@ export const CertificationDeck: React.FC = () => {
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.1, duration: 0.5 }}
-              className="h-[400px] w-full"
+              transition={{ delay: idx * 0.08, duration: 0.5 }}
+              className="h-[430px] w-full"
               data-cursor="CERT ♦"
             >
               <PlayingCard
@@ -44,25 +44,25 @@ export const CertificationDeck: React.FC = () => {
                 suit={cert.suit}
                 variant="ivory"
                 accentTheme="gold"
-                className="w-full h-full shadow-xl hover:scale-105 transition-transform"
+                className="w-full h-full shadow-xl hover:scale-103 transition-transform"
                 tiltIntensity={12}
                 badge={cert.issuer}
               >
-                <div className="flex-1 flex flex-col justify-between py-2 text-slate-900">
+                <div className="flex-1 flex flex-col justify-between py-1 text-slate-900 h-full">
                   {/* Top Issuer Info */}
-                  <div className="text-center pt-2">
+                  <div className="text-center pt-1">
                     <span className="text-[10px] font-mono font-bold tracking-[0.2em] text-amber-900 uppercase">
-                      COLLECTIBLE CARD #{idx + 1}
+                      COLLECTIBLE #{idx + 1}
                     </span>
-                    <h3 className="font-serif text-xl font-black text-slate-950 mt-1 leading-tight">
+                    <h3 className="font-serif text-lg font-black text-slate-950 mt-0.5 leading-tight">
                       {cert.name}
                     </h3>
                   </div>
 
                   {/* Center Emblem */}
-                  <div className="my-auto flex flex-col items-center justify-center p-4 rounded-xl bg-gradient-to-b from-amber-50 to-amber-100/60 border border-amber-900/10 text-center shadow-inner">
-                    <div className="w-14 h-14 rounded-full bg-white shadow flex items-center justify-center mb-2 border border-amber-400/40">
-                      <Award className="w-7 h-7 text-amber-600" />
+                  <div className="my-auto flex flex-col items-center justify-center p-3.5 rounded-xl bg-gradient-to-b from-amber-50 to-amber-100/60 border border-amber-900/10 text-center shadow-inner">
+                    <div className="w-12 h-12 rounded-full bg-white shadow flex items-center justify-center mb-1.5 border border-amber-400/40">
+                      <Award className="w-6 h-6 text-amber-600" />
                     </div>
                     <span className="font-mono text-xs font-bold text-slate-900">
                       {cert.issuer}

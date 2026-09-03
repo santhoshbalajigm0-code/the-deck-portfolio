@@ -66,7 +66,7 @@ export const PORTFOLIO_DATA = {
     location: 'Trichy, Tamil Nadu - 620011',
     bio: 'Motivated MCA student with strong programming skills and a passion for software development. Skilled in Java, Python, SQL, and modern web technologies. Quick learner and dedicated team player eager to build robust real-world digital solutions.',
     objective: 'To apply technical proficiency in Python, Java, and Full-Stack Engineering to solve complex computational challenges, build scalable software, and craft memorable digital experiences.',
-    signature: 'SB',
+    signature: 'Santhosh Balaji',
     languages: ['Tamil', 'English'],
     softSkills: ['Fast Learner', 'Active Listening', 'Teamwork', 'Time Management', 'Effective Communication'],
   },
@@ -162,7 +162,7 @@ export const PORTFOLIO_DATA = {
       institution: 'Bishop Heber College, Trichy',
       period: '2024 - 2026',
       field: 'Computer Applications and Software Development',
-      cgpa: '7.00',
+      cgpa: '7.99',
       highlights: [
         'Advanced Software Engineering & Enterprise Architecture',
         'Object-Oriented Programming, Database Management & Cloud Paradigms',

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Layers, ChevronUp, Volume2, VolumeX } from 'lucide-react';
+import { Layers, ChevronUp, Volume2, VolumeX, FileText } from 'lucide-react';
 import { cardAudio } from '../../utils/soundEffects';
 
 interface CardNavFanProps {
   activeSection: string;
   onSelectSection: (id: string) => void;
+  onOpenCV?: () => void;
 }
 
 interface NavCardItem {
@@ -16,7 +17,7 @@ interface NavCardItem {
   color: string;
 }
 
-export const CardNavFan: React.FC<CardNavFanProps> = ({ activeSection, onSelectSection }) => {
+export const CardNavFan: React.FC<CardNavFanProps> = ({ activeSection, onSelectSection, onOpenCV }) => {
   const [isFanned, setIsFanned] = useState(false);
   const [isAudioEnabled, setIsAudioEnabled] = useState(true);
 
@@ -52,7 +53,7 @@ export const CardNavFan: React.FC<CardNavFanProps> = ({ activeSection, onSelectS
   return (
     <>
       {/* Sticky Top Micro Header (Minimal & Accessible) */}
-      <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-40 px-4 py-2 rounded-full bg-navy-950/80 backdrop-blur-md border border-amber-500/30 flex items-center gap-3 shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+      <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-40 px-3.5 sm:px-4 py-2 rounded-full bg-navy-950/85 backdrop-blur-md border border-amber-500/30 flex items-center gap-2.5 sm:gap-3 shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
         <button
           onClick={() => handleCardClick('hero')}
           className="flex items-center gap-2 text-xs font-mono font-bold text-amber-300 hover:text-white transition-colors"
@@ -81,6 +82,22 @@ export const CardNavFan: React.FC<CardNavFanProps> = ({ activeSection, onSelectS
             </button>
           ))}
         </div>
+
+        {/* CV Modal Trigger Button */}
+        {onOpenCV && (
+          <button
+            onClick={() => {
+              cardAudio.playGlide();
+              onOpenCV();
+            }}
+            className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-400 text-slate-950 text-xs font-mono font-black shadow-[0_0_12px_rgba(212,175,55,0.4)] hover:shadow-[0_0_20px_rgba(212,175,55,0.7)] hover:scale-105 transition-all cursor-pointer"
+            data-cursor="CV"
+            title="Open & Download CV / Resume"
+          >
+            <FileText className="w-3.5 h-3.5" />
+            <span>CV</span>
+          </button>
+        )}
 
         <button
           onClick={toggleAudio}

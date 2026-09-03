@@ -23,11 +23,11 @@ export const ExperienceStack: React.FC = () => {
           <span className="font-poker text-2xl text-pink-400">♥</span>
         </div>
 
-        <p className="text-xs md:text-sm text-slate-400 font-mono tracking-wide mb-10 text-center">
+        <p className="text-xs md:text-sm text-slate-400 font-mono tracking-wide mb-8 text-center">
           Professional Engineering Tenures & Institutional References
         </p>
 
-        {/* Primary Experience Card */}
+        {/* Primary Experience Card with Grand Playing Card Format */}
         {experience.map((exp) => (
           <motion.div
             key={exp.id}
@@ -35,55 +35,55 @@ export const ExperienceStack: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="w-full max-w-3xl mb-8"
+            className="w-full max-w-4xl mb-8"
           >
             <PlayingCard
               rank={exp.rank}
               suit={exp.suit}
               variant="ivory"
               accentTheme="ruby"
-              className="w-full h-auto"
+              className="w-full h-auto min-h-[720px] md:min-h-[760px]"
               tiltIntensity={8}
               badge="VERIFIED INTERNSHIP"
               dataCursor="EXPERIENCE ♥"
             >
-              <div className="flex-1 flex flex-col justify-between py-2 text-slate-900">
+              <div className="flex-1 flex flex-col justify-between py-4 text-slate-900 h-full">
                 {/* Header */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-amber-900/15 gap-2">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-amber-900/15 gap-3">
                   <div>
-                    <span className="text-[10px] font-mono font-bold tracking-[0.2em] text-rose-700 uppercase">
+                    <span className="text-xs font-mono font-bold tracking-[0.25em] text-rose-700 uppercase">
                       FULL STACK DEVELOPMENT
                     </span>
-                    <h3 className="font-serif text-2xl md:text-3xl font-black text-slate-950 mt-0.5">
+                    <h3 className="font-serif text-3xl md:text-4xl font-black text-slate-950 mt-1">
                       {exp.company}
                     </h3>
-                    <div className="flex items-center gap-2 text-xs font-mono font-semibold text-slate-700 mt-1">
-                      <Briefcase className="w-3.5 h-3.5 text-rose-600" />
+                    <div className="flex items-center gap-2 text-sm md:text-base font-mono font-bold text-slate-700 mt-1">
+                      <Briefcase className="w-4 h-4 text-rose-600" />
                       <span>{exp.role}</span>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-100 border border-amber-800/20 text-slate-800 font-mono text-xs font-bold self-start sm:self-auto">
-                    <Calendar className="w-3.5 h-3.5 text-rose-600" />
+                  <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-100 border border-amber-800/25 text-slate-800 font-mono text-xs md:text-sm font-bold self-start sm:self-auto shadow-xs">
+                    <Calendar className="w-4 h-4 text-rose-600" />
                     <span>{exp.period}</span>
                   </div>
                 </div>
 
                 {/* Body Description & Key Contributions */}
-                <div className="my-5 space-y-4">
-                  <p className="text-xs md:text-sm text-slate-700 leading-relaxed">
+                <div className="my-auto space-y-4 py-3">
+                  <p className="text-sm md:text-base text-slate-700 leading-relaxed font-sans font-medium">
                     {exp.description}
                   </p>
 
                   <div>
-                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-rose-800 block mb-2">
+                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-rose-800 block mb-3">
                       Key Engineering Responsibilities:
                     </span>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    <div className="space-y-2.5">
                       {exp.keyContributions.map((kc, idx) => (
-                        <div key={idx} className="flex items-start gap-2 text-xs text-slate-700 bg-amber-50/60 p-2.5 rounded-xl border border-amber-900/10">
-                          <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                          <span>{kc}</span>
+                        <div key={idx} className="flex items-start gap-3 text-xs md:text-sm text-slate-800 bg-amber-50/80 p-3.5 rounded-xl border border-amber-900/10 shadow-xs">
+                          <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                          <span className="leading-snug">{kc}</span>
                         </div>
                       ))}
                     </div>
@@ -91,15 +91,15 @@ export const ExperienceStack: React.FC = () => {
                 </div>
 
                 {/* Tech Badges */}
-                <div className="pt-3 border-t border-amber-900/15 flex flex-wrap items-center justify-between gap-2">
-                  <div className="flex flex-wrap gap-1.5">
+                <div className="pt-4 border-t border-amber-900/15 flex flex-wrap items-center justify-between gap-3">
+                  <div className="flex flex-wrap gap-2">
                     {exp.technologies.map((t) => (
-                      <span key={t} className="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-amber-200/80 text-slate-900 border border-amber-800/20">
+                      <span key={t} className="px-3.5 py-1 rounded-lg text-xs font-mono font-bold bg-amber-200/80 text-slate-900 border border-amber-800/25 shadow-xs">
                         {t}
                       </span>
                     ))}
                   </div>
-                  <span className="text-[10px] font-mono text-slate-500 font-semibold uppercase">
+                  <span className="text-xs font-mono text-slate-500 font-bold uppercase tracking-wider">
                     Extazee Cohort
                   </span>
                 </div>
@@ -109,8 +109,8 @@ export const ExperienceStack: React.FC = () => {
         ))}
 
         {/* Academic References Cards Banner */}
-        <div className="w-full max-w-3xl mt-4">
-          <div className="text-center mb-4">
+        <div className="w-full max-w-2xl mt-2">
+          <div className="text-center mb-3">
             <span className="text-xs font-mono font-bold uppercase tracking-widest text-slate-400">
               Institutional Academic References (Bishop Heber College)
             </span>

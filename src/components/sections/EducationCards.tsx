@@ -25,12 +25,12 @@ export const EducationCards: React.FC = () => {
           <span className="font-poker text-2xl text-blue-400">♠</span>
         </div>
 
-        <p className="text-xs md:text-sm text-slate-400 font-mono tracking-wide mb-12 text-center">
+        <p className="text-xs md:text-sm text-slate-400 font-mono tracking-wide mb-10 text-center">
           Bishop Heber College, Tiruchirappalli • Two-Card Academic Spread
         </p>
 
-        {/* 2-Card Poker Hand Spread */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-6 w-full max-w-4xl relative">
+        {/* 2-Card Poker Hand Spread with Equal Ratio Proportions */}
+        <div className="flex flex-col md:flex-row items-center justify-center gap-6 lg:gap-8 w-full max-w-4xl relative">
           {education.map((edu, idx) => {
             const isFirst = idx === 0;
             const isHovered = hoveredIndex === idx;
@@ -44,13 +44,13 @@ export const EducationCards: React.FC = () => {
                 }}
                 onMouseLeave={() => setHoveredIndex(null)}
                 animate={{
-                  rotate: isFirst ? (isHovered ? -6 : -3) : (isHovered ? 6 : 3),
-                  x: isFirst ? (isHovered ? -15 : 0) : (isHovered ? 15 : 0),
-                  y: isHovered ? -15 : 0,
-                  scale: isHovered ? 1.03 : 1,
+                  rotate: isFirst ? (isHovered ? -4 : -2) : (isHovered ? 4 : 2),
+                  x: isFirst ? (isHovered ? -10 : 0) : (isHovered ? 10 : 0),
+                  y: isHovered ? -12 : 0,
+                  scale: isHovered ? 1.025 : 1,
                 }}
                 transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-                className="w-full md:w-[420px] h-[480px]"
+                className="w-full md:w-[390px] h-[520px]"
                 data-cursor="EDUCATION ♠"
               >
                 <PlayingCard
@@ -62,39 +62,39 @@ export const EducationCards: React.FC = () => {
                   tiltIntensity={10}
                   badge={`CGPA: ${edu.cgpa}`}
                 >
-                  <div className="flex-1 flex flex-col justify-between py-2 text-slate-900">
+                  <div className="flex-1 flex flex-col justify-between py-1 text-slate-900 h-full">
                     {/* Header */}
-                    <div className="text-center pt-2">
-                      <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-900 border border-blue-300 font-mono text-[10px] font-bold uppercase mb-2">
-                        <GraduationCap className="w-3.5 h-3.5" />
+                    <div className="text-center pt-1">
+                      <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-900 border border-blue-300 font-mono text-[10px] font-bold uppercase mb-1.5 shadow-xs">
+                        <GraduationCap className="w-3.5 h-3.5 text-blue-700" />
                         <span>{edu.period}</span>
                       </div>
-                      <h3 className="font-serif text-2xl font-black text-slate-950">
+                      <h3 className="font-serif text-2xl font-black text-slate-950 leading-tight">
                         {edu.degree.split('(')[0]}
                       </h3>
-                      <p className="font-mono text-xs text-blue-800 font-bold mt-0.5">
+                      <p className="font-mono text-xs text-blue-800 font-bold mt-1">
                         {edu.field}
                       </p>
                     </div>
 
-                    {/* Institution & CGPA Highlight */}
-                    <div className="my-auto p-4 rounded-xl bg-gradient-to-b from-amber-50 to-amber-100/60 border border-amber-900/10 text-center shadow-inner">
-                      <span className="font-serif text-sm font-bold text-slate-900 block mb-1">
+                    {/* Institution & CGPA Highlight Box with 7.99 for MCA */}
+                    <div className="my-auto p-4 rounded-xl bg-gradient-to-b from-amber-50 to-amber-100/70 border border-amber-900/15 text-center shadow-inner">
+                      <span className="font-serif text-sm font-bold text-slate-900 block mb-1.5">
                         {edu.institution}
                       </span>
-                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-amber-400/30 border border-amber-600/40 text-slate-950 font-mono text-xs font-black">
-                        <Award className="w-3.5 h-3.5 text-amber-700" />
+                      <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-amber-400/30 border border-amber-600/40 text-slate-950 font-mono text-xs font-black shadow-xs">
+                        <Award className="w-4 h-4 text-amber-700" />
                         <span>Cumulative CGPA: {edu.cgpa} / 10.0</span>
                       </div>
                     </div>
 
                     {/* Academic Highlights */}
-                    <div className="space-y-1.5 pt-2 border-t border-amber-900/15">
+                    <div className="space-y-1.5 pt-2.5 border-t border-amber-900/15">
                       <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500 block">
                         Curriculum Scope:
                       </span>
                       {edu.highlights.map((h, hIdx) => (
-                        <div key={hIdx} className="flex items-start gap-1.5 text-xs text-slate-700">
+                        <div key={hIdx} className="flex items-start gap-1.5 text-xs text-slate-700 leading-snug">
                           <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0 mt-0.5" />
                           <span>{h}</span>
                         </div>

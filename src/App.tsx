@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ShuffleIntro } from './components/intro/ShuffleIntro';
 import { CustomCursor } from './components/common/CustomCursor';
+import { PortfolioBackground } from './components/common/PortfolioBackground';
+import { CVModal } from './components/common/CVModal';
 import { CardNavFan } from './components/nav/CardNavFan';
 import { HeroCard } from './components/sections/HeroCard';
 import { AboutCard } from './components/sections/AboutCard';
@@ -17,6 +19,7 @@ import { FinalDeck } from './components/sections/FinalDeck';
 export const App: React.FC = () => {
   const [introCompleted, setIntroCompleted] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
+  const [isCVModalOpen, setIsCVModalOpen] = useState(false);
 
   // Track active section with IntersectionObserver
   useEffect(() => {
@@ -65,6 +68,9 @@ export const App: React.FC = () => {
       {/* Interactive Custom Cursor */}
       <CustomCursor />
 
+      {/* Atmospheric Portfolio Background (Nebulae, Grid, Golden Stardust & Floating Suits) */}
+      <PortfolioBackground />
+
       {/* Opening Shuffling Intro Experience */}
       <AnimatePresence>
         {!introCompleted && (
@@ -84,15 +90,17 @@ export const App: React.FC = () => {
           <CardNavFan
             activeSection={activeSection}
             onSelectSection={(id) => scrollToSection(id)}
+            onOpenCV={() => setIsCVModalOpen(true)}
           />
 
           {/* Portfolio Playing Card Sections */}
           <HeroCard
             onExploreDeck={() => scrollToSection('about')}
             onViewProjects={() => scrollToSection('projects')}
+            onOpenCV={() => setIsCVModalOpen(true)}
           />
 
-          <AboutCard />
+          <AboutCard onOpenCV={() => setIsCVModalOpen(true)} />
 
           <SkillsDeck />
 
@@ -106,11 +114,17 @@ export const App: React.FC = () => {
 
           <HobbiesDeck />
 
-          <ContactCard />
+          <ContactCard onOpenCV={() => setIsCVModalOpen(true)} />
 
           <FinalDeck onReshuffle={handleReshuffle} />
         </motion.main>
       )}
+
+      {/* Global Curriculum Vitae (CV) Modal */}
+      <CVModal
+        isOpen={isCVModalOpen}
+        onClose={() => setIsCVModalOpen(false)}
+      />
     </div>
   );
 };

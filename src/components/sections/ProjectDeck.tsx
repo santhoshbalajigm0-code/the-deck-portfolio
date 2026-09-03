@@ -21,10 +21,10 @@ export const ProjectDeck: React.FC = () => {
 
   const getProjectIcon = (rank: string) => {
     switch (rank) {
-      case 'A': return <Shield className="w-10 h-10 text-rose-500" />;
-      case 'K': return <Anchor className="w-10 h-10 text-emerald-500" />;
-      case 'J': return <Globe className="w-10 h-10 text-blue-500" />;
-      default: return <Sparkles className="w-10 h-10 text-amber-500" />;
+      case 'A': return <Shield className="w-9 h-9 text-rose-500" />;
+      case 'K': return <Anchor className="w-9 h-9 text-emerald-500" />;
+      case 'J': return <Globe className="w-9 h-9 text-blue-500" />;
+      default: return <Sparkles className="w-9 h-9 text-amber-500" />;
     }
   };
 
@@ -65,7 +65,7 @@ export const ProjectDeck: React.FC = () => {
               cardAudio.playGlide();
               setIsStackMode(false);
             }}
-            className={`px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all flex items-center gap-2 ${
+            className={`px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all flex items-center gap-2 cursor-pointer ${
               !isStackMode
                 ? 'bg-rose-500 text-white shadow-[0_0_15px_rgba(225,29,72,0.4)]'
                 : 'bg-navy-900 text-slate-400 border border-slate-700 hover:text-white'
@@ -80,7 +80,7 @@ export const ProjectDeck: React.FC = () => {
               setIsStackMode(true);
               setCurrentStackIndex(0);
             }}
-            className={`px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all flex items-center gap-2 ${
+            className={`px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all flex items-center gap-2 cursor-pointer ${
               isStackMode
                 ? 'bg-rose-500 text-white shadow-[0_0_15px_rgba(225,29,72,0.4)]'
                 : 'bg-navy-900 text-slate-400 border border-slate-700 hover:text-white'
@@ -92,47 +92,47 @@ export const ProjectDeck: React.FC = () => {
           </button>
         </div>
 
-        {/* VIEW 1: Standard 3-Card Poker Hand */}
+        {/* VIEW 1: Standard 3-Card Poker Hand (Standardized Identical Heights) */}
         {!isStackMode ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 w-full">
             {projects.map((proj, idx) => {
               const isFlipped = !!flippedCards[proj.id];
 
               return (
-                <div key={proj.id} className="h-[520px] w-full">
+                <div key={proj.id} className="h-[540px] w-full">
                   <PlayingCard
                     rank={proj.rank}
                     suit={proj.suit}
                     variant="ivory"
                     accentTheme={proj.colorTheme}
                     isFlipped={isFlipped}
-                    className="w-full h-full"
+                    className="w-full h-full shadow-2xl"
                     tiltIntensity={12}
                     dataCursor="FLIP"
                     onClick={() => toggleFlip(proj.id)}
                     badge={proj.period}
                     backContent={
-                      <div className="flex-1 flex flex-col justify-between text-slate-900">
+                      <div className="flex-1 flex flex-col justify-between text-slate-900 h-full">
                         <div>
-                          <div className="flex items-center justify-between pb-2 border-b border-amber-900/20 mb-3">
+                          <div className="flex items-center justify-between pb-2 border-b border-amber-900/20 mb-2.5">
                             <span className="text-[10px] font-mono uppercase font-bold text-amber-900">ARCHITECTURAL DETAILS</span>
-                            <span className="text-[10px] font-mono text-slate-500">{proj.period}</span>
+                            <span className="text-[10px] font-mono text-slate-500 font-bold">{proj.period}</span>
                           </div>
 
-                          <h4 className="font-serif text-lg font-black text-slate-950 mb-2">
+                          <h4 className="font-serif text-lg font-black text-slate-950 mb-1.5 leading-tight">
                             {proj.title}
                           </h4>
 
-                          <p className="text-xs text-slate-700 leading-relaxed mb-4">
+                          <p className="text-xs text-slate-700 leading-relaxed mb-3">
                             {proj.description}
                           </p>
 
-                          <div className="space-y-2 mb-4">
+                          <div className="space-y-1.5 mb-3">
                             <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-900 block">
-                              Key Functionalities:
+                              Key Highlights:
                             </span>
                             {proj.highlights.map((hl, hIdx) => (
-                              <div key={hIdx} className="flex items-start gap-1.5 text-[11px] text-slate-700">
+                              <div key={hIdx} className="flex items-start gap-1.5 text-[11px] text-slate-700 leading-snug">
                                 <CheckCircle2 className="w-3.5 h-3.5 text-rose-600 shrink-0 mt-0.5" />
                                 <span>{hl}</span>
                               </div>
@@ -140,30 +140,30 @@ export const ProjectDeck: React.FC = () => {
                           </div>
                         </div>
 
-                        <div className="pt-3 border-t border-amber-900/15 flex items-center justify-between">
+                        <div className="pt-2.5 border-t border-amber-900/15 flex items-center justify-between">
                           <button
                             onClick={(e) => {
                               e.stopPropagation();
                               toggleFlip(proj.id);
                             }}
-                            className="px-3 py-1.5 rounded-lg bg-amber-200/80 hover:bg-amber-300 text-slate-900 font-mono text-xs font-bold flex items-center gap-1.5 border border-amber-800/20"
+                            className="px-3 py-1.5 rounded-lg bg-amber-200/80 hover:bg-amber-300 text-slate-900 font-mono text-xs font-bold flex items-center gap-1.5 border border-amber-800/20 cursor-pointer"
                           >
                             <RotateCw className="w-3.5 h-3.5" />
                             <span>Flip to Front</span>
                           </button>
-                          <span className="text-[10px] font-mono text-slate-500">Card 0{idx + 1}</span>
+                          <span className="text-[10px] font-mono text-slate-500 font-bold">CARD #{idx + 1}</span>
                         </div>
                       </div>
                     }
                   >
                     {/* Front Face Content */}
-                    <div className="flex-1 flex flex-col justify-between py-2 text-slate-900">
+                    <div className="flex-1 flex flex-col justify-between py-1 text-slate-900 h-full">
                       {/* Top Header */}
-                      <div className="text-center pt-2">
+                      <div className="text-center pt-1">
                         <span className="text-[10px] font-mono font-bold tracking-[0.2em] text-amber-900 uppercase">
                           PROJECT 0{idx + 1}
                         </span>
-                        <h3 className="font-serif text-xl font-black text-slate-950 mt-1 leading-tight">
+                        <h3 className="font-serif text-xl font-black text-slate-950 mt-0.5 leading-tight">
                           {proj.title}
                         </h3>
                         <p className="text-[11px] font-mono text-slate-600 font-semibold mt-1">
@@ -172,11 +172,11 @@ export const ProjectDeck: React.FC = () => {
                       </div>
 
                       {/* Visual Center Emblem */}
-                      <div className="my-auto flex flex-col items-center justify-center p-6 rounded-2xl bg-gradient-to-b from-amber-50 to-amber-100/50 border border-amber-900/10 shadow-inner">
-                        <div className="w-20 h-20 rounded-2xl bg-white shadow-md flex items-center justify-center mb-3">
+                      <div className="my-auto flex flex-col items-center justify-center p-5 rounded-2xl bg-gradient-to-b from-amber-50 to-amber-100/50 border border-amber-900/10 shadow-inner">
+                        <div className="w-16 h-16 rounded-2xl bg-white shadow-md flex items-center justify-center mb-2">
                           {getProjectIcon(proj.rank)}
                         </div>
-                        <span className="font-serif text-sm font-bold text-slate-800">
+                        <span className="font-serif text-xs font-bold text-slate-800">
                           {proj.techStack[0]} • {proj.techStack[1]}
                         </span>
                       </div>
@@ -242,7 +242,7 @@ export const ProjectDeck: React.FC = () => {
                         tiltIntensity={isTop ? 10 : 0}
                         dataCursor="SWIPE"
                       >
-                        <div className="flex-1 flex flex-col justify-between py-2 text-slate-900">
+                        <div className="flex-1 flex flex-col justify-between py-2 text-slate-900 h-full">
                           <div className="text-center pt-2">
                             <span className="text-[10px] font-mono font-bold tracking-[0.2em] text-amber-900 uppercase">
                               CARD {currentStackIndex + sIdx + 1} OF {projects.length}
@@ -272,7 +272,7 @@ export const ProjectDeck: React.FC = () => {
                           {isTop && (
                             <button
                               onClick={handleNextInStack}
-                              className="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-serif text-xs font-bold flex items-center justify-center gap-2 shadow-lg"
+                              className="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-serif text-xs font-bold flex items-center justify-center gap-2 shadow-lg cursor-pointer"
                             >
                               <span>DEAL NEXT CARD</span>
                               <ChevronRight className="w-4 h-4" />
@@ -300,7 +300,7 @@ export const ProjectDeck: React.FC = () => {
                 </p>
                 <button
                   onClick={handleResetStack}
-                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 text-navy-950 font-serif font-bold text-sm flex items-center justify-center gap-2 mx-auto shadow-lg hover:scale-105 transition-transform"
+                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 text-navy-950 font-serif font-bold text-sm flex items-center justify-center gap-2 mx-auto shadow-lg hover:scale-105 transition-transform cursor-pointer"
                 >
                   <RefreshCw className="w-4 h-4" />
                   <span>BACK TO DECK</span>

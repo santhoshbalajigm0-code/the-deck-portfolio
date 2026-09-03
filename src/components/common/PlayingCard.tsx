@@ -121,14 +121,14 @@ export const PlayingCard: React.FC<PlayingCardProps> = ({
 
       {/* Center Mandala Seal */}
       <div className="flex-1 flex flex-col items-center justify-center relative my-2">
-        <div className="w-20 h-20 rounded-full border-2 border-amber-400/40 flex items-center justify-center bg-navy-950/80 shadow-inner relative">
-          <div className="absolute inset-1 rounded-full border border-amber-400/20 animate-spin" style={{ animationDuration: '24s' }} />
-          <div className="text-center">
-            <span className="block font-poker text-xl font-bold gold-foil-text tracking-widest">SB</span>
-            <span className="block text-[8px] tracking-[0.2em] text-amber-300/60 uppercase">The Deck</span>
+        <div className="w-20 h-20 rounded-full border-2 border-amber-400/50 flex flex-col items-center justify-center bg-navy-950/90 shadow-inner relative">
+          <div className="absolute inset-1 rounded-full border border-amber-400/25 animate-spin" style={{ animationDuration: '24s' }} />
+          <div className="text-center flex flex-col items-center justify-center">
+            <span className="block font-poker text-lg font-black gold-foil-text tracking-widest">SB</span>
+            <span className="block text-[7.5px] tracking-[0.25em] text-amber-300/80 uppercase font-mono font-bold">THE DECK</span>
           </div>
         </div>
-        <div className="flex items-center gap-2 mt-3 text-[10px] text-amber-200/50 tracking-widest font-mono">
+        <div className="flex items-center gap-2 mt-3 text-[11px] text-amber-300/60 tracking-widest font-mono">
           <span>♠</span><span>♥</span><span>♦</span><span>♣</span>
         </div>
       </div>

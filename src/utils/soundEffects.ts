@@ -3,6 +3,11 @@ class CardAudio {
   private ctx: AudioContext | null = null;
   public enabled: boolean = true;
 
+  toggleMute(): boolean {
+    this.enabled = !this.enabled;
+    return !this.enabled;
+  }
+
   private getContext(): AudioContext | null {
     if (!this.ctx && typeof window !== 'undefined') {
       const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;

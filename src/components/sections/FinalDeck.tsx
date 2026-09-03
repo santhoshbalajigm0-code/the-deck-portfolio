@@ -32,10 +32,9 @@ export const FinalDeck: React.FC<FinalDeckProps> = ({ onReshuffle }) => {
   };
 
   return (
-    <footer className="py-24 px-4 relative flex flex-col items-center justify-center overflow-hidden border-t border-slate-800/80 bg-[#03060f]">
-      {/* Background Ambience */}
-      <div className="absolute inset-0 bg-noise opacity-20 pointer-events-none" />
-      <div className="w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[140px] pointer-events-none absolute" />
+    <footer className="py-24 px-4 relative flex flex-col items-center justify-center overflow-hidden border-t border-amber-500/20 bg-transparent">
+      {/* Subtle Bottom Glow Accent */}
+      <div className="w-[500px] h-[350px] bg-amber-500/10 rounded-full blur-[140px] pointer-events-none absolute" />
 
       <div className="w-full max-w-md flex flex-col items-center text-center relative z-10">
         <span className="text-xs font-mono font-bold tracking-[0.3em] uppercase text-amber-400 mb-6 flex items-center gap-2">
@@ -44,8 +43,8 @@ export const FinalDeck: React.FC<FinalDeckProps> = ({ onReshuffle }) => {
           <Sparkles className="w-3.5 h-3.5" />
         </span>
 
-        {/* Master S♠ Tribute Card */}
-        <div className="w-full h-[460px] mb-8">
+        {/* Master S♠ Tribute Card (Standardized Dimensions) */}
+        <div className="w-full h-[500px] mb-8">
           <PlayingCard
             rank="S"
             suit="♠"
@@ -55,12 +54,12 @@ export const FinalDeck: React.FC<FinalDeckProps> = ({ onReshuffle }) => {
             tiltIntensity={12}
             dataCursor="FINALE ♠"
           >
-            <div className="flex-1 flex flex-col justify-between py-2 text-slate-900">
-              <div className="text-center pt-2">
+            <div className="flex-1 flex flex-col justify-between py-1 text-slate-900 h-full">
+              <div className="text-center pt-1">
                 <span className="text-[10px] font-mono font-bold tracking-[0.2em] text-amber-900 uppercase">
                   MASTER SUITE CARD
                 </span>
-                <h3 className="font-serif text-2xl font-black text-slate-950 mt-1">
+                <h3 className="font-serif text-2xl font-black text-slate-950 mt-0.5">
                   THANK YOU FOR VISITING
                 </h3>
               </div>

@@ -11,14 +11,14 @@ export const SkillsDeck: React.FC = () => {
 
   const getIcon = (iconName: string) => {
     switch (iconName) {
-      case 'Code': return <Code2 className="w-5 h-5" />;
-      case 'Database': return <Database className="w-5 h-5" />;
-      case 'Layers': return <Layers className="w-5 h-5" />;
-      case 'Server': return <Server className="w-5 h-5" />;
-      case 'Cpu': return <Cpu className="w-5 h-5" />;
-      case 'FileCode': return <FileCode className="w-5 h-5" />;
-      case 'Palette': return <Palette className="w-5 h-5" />;
-      default: return <Code2 className="w-5 h-5" />;
+      case 'Code': return <Code2 className="w-8 h-8" />;
+      case 'Database': return <Database className="w-8 h-8" />;
+      case 'Layers': return <Layers className="w-8 h-8" />;
+      case 'Server': return <Server className="w-8 h-8" />;
+      case 'Cpu': return <Cpu className="w-8 h-8" />;
+      case 'FileCode': return <FileCode className="w-8 h-8" />;
+      case 'Palette': return <Palette className="w-8 h-8" />;
+      default: return <Code2 className="w-8 h-8" />;
     }
   };
 
@@ -38,7 +38,7 @@ export const SkillsDeck: React.FC = () => {
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-600/10 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-600/10 rounded-full blur-[150px] pointer-events-none" />
 
-      <div className="w-full max-w-5xl flex flex-col items-center">
+      <div className="w-full max-w-6xl flex flex-col items-center">
         {/* Section Header */}
         <div className="flex items-center gap-3 mb-2">
           <span className="font-poker text-2xl text-emerald-400">♣</span>
@@ -49,11 +49,11 @@ export const SkillsDeck: React.FC = () => {
         </div>
 
         <p className="text-xs md:text-sm text-slate-400 font-mono tracking-wide mb-10 text-center">
-          Miniature Playing Cards representing Technical Competencies
+          Miniature Playing Cards representing Technical Competencies • Click any card
         </p>
 
-        {/* 9 Miniature Skill Playing Cards Grid (All styled like authentic Ivory playing cards) */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-6 w-full mb-10">
+        {/* 9 Miniature Skill Playing Cards Grid (Enlarged Luxury Playing Cards) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 w-full mb-10">
           {skills.map((skill, index) => {
             const isSelected = selectedSkill?.name === skill.name;
 
@@ -63,12 +63,12 @@ export const SkillsDeck: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.05, duration: 0.4 }}
+                transition={{ delay: index * 0.04, duration: 0.4 }}
                 onClick={() => {
                   cardAudio.playGlide();
                   setSelectedSkill(skill);
                 }}
-                className="cursor-pointer"
+                className="cursor-pointer h-[480px] md:h-[500px] w-full"
                 data-cursor="SKILL"
               >
                 <PlayingCard
@@ -76,38 +76,54 @@ export const SkillsDeck: React.FC = () => {
                   suit={skill.suit}
                   variant="ivory"
                   accentTheme={isSelected ? 'emerald' : 'gold'}
-                  className={`w-full h-48 md:h-52 transition-all ${
-                    isSelected ? 'ring-2 ring-emerald-500 ring-offset-2 ring-offset-navy-950 scale-105 shadow-card-glow-green' : 'hover:scale-103'
+                  className={`w-full h-full transition-all shadow-2xl ${
+                    isSelected ? 'ring-2 ring-emerald-500 ring-offset-2 ring-offset-navy-950 scale-103 shadow-card-glow-green' : 'hover:scale-102'
                   }`}
-                  tiltIntensity={12}
+                  tiltIntensity={10}
                 >
-                  <div className="flex-1 flex flex-col items-center justify-between py-1 text-center">
+                  <div className="flex-1 flex flex-col items-center justify-between py-3 text-center h-full">
                     {/* Category pill */}
-                    <span className={`text-[9px] font-mono tracking-widest uppercase px-2 py-0.5 rounded-full border shadow-xs font-bold ${getCategoryBadgeClass(skill.category)}`}>
+                    <span className={`text-xs font-mono tracking-widest uppercase px-3.5 py-1 rounded-full border shadow-xs font-bold ${getCategoryBadgeClass(skill.category)}`}>
                       {skill.category}
                     </span>
 
-                    {/* Skill Icon & Name */}
-                    <div className="flex flex-col items-center my-auto">
+                    {/* Skill Icon, Name, Domain & Details */}
+                    <div className="flex flex-col items-center my-auto py-2">
                       <div
-                        className="w-12 h-12 rounded-xl flex items-center justify-center mb-1.5 shadow-sm transition-transform group-hover:scale-110"
+                        className="w-20 h-20 rounded-2xl flex items-center justify-center mb-4 shadow-md transition-transform group-hover:scale-110"
                         style={{
                           backgroundColor: `${skill.accentColor}18`,
                           color: skill.accentColor,
-                          border: `1px solid ${skill.accentColor}40`
+                          border: `2px solid ${skill.accentColor}40`
                         }}
                       >
                         {getIcon(skill.iconName)}
                       </div>
-                      <h4 className="font-serif text-base md:text-lg font-black text-slate-950">
+                      <h4 className="font-serif text-2xl md:text-3xl font-black text-slate-950 mb-1.5 tracking-tight">
                         {skill.name}
                       </h4>
+                      <span className="text-sm font-mono font-bold text-slate-700 tracking-wide mb-1">
+                        {skill.proficiencyLevel}
+                      </span>
+                      <p className="text-xs text-slate-600 font-medium max-w-[220px] line-clamp-2 mb-3">
+                        {skill.description}
+                      </p>
+
+                      {/* 5-pip Playing Card Suit Rating */}
+                      <div className="flex items-center gap-2 text-sm font-poker" style={{ color: skill.accentColor }}>
+                        <span>{skill.suit}</span>
+                        <span>{skill.suit}</span>
+                        <span>{skill.suit}</span>
+                        <span>{skill.suit}</span>
+                        <span className="opacity-35">{skill.suit}</span>
+                      </div>
                     </div>
 
-                    {/* Proficiency Tag */}
-                    <span className="text-[10px] font-mono font-semibold text-slate-600">
-                      {skill.proficiencyLevel}
-                    </span>
+                    {/* Bottom Card Footer Details */}
+                    <div className="pt-3 border-t border-amber-900/20 w-full flex items-center justify-between px-2 text-xs font-mono text-slate-600 font-bold">
+                      <span className="uppercase text-amber-900 font-black tracking-wider">{skill.category}</span>
+                      <span className="tracking-widest">ROYAL #{index + 1}</span>
+                    </div>
                   </div>
                 </PlayingCard>
               </motion.div>
@@ -121,7 +137,7 @@ export const SkillsDeck: React.FC = () => {
             key={selectedSkill.name}
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            className="w-full max-w-2xl p-5 rounded-2xl bg-gradient-to-r from-navy-900/90 via-navy-800/90 to-navy-900/90 border border-emerald-500/40 backdrop-blur-md shadow-2xl flex flex-col sm:flex-row items-center gap-5"
+            className="w-full max-w-2xl p-5 rounded-2xl bg-gradient-to-r from-navy-900/95 via-navy-800/95 to-navy-900/95 border border-emerald-500/40 backdrop-blur-md shadow-2xl flex flex-col sm:flex-row items-center gap-5"
           >
             <div
               className="w-14 h-14 rounded-2xl flex items-center justify-center text-white shrink-0 shadow-lg"
