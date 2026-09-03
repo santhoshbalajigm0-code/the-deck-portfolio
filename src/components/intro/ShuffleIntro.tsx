@@ -320,8 +320,8 @@ export const ShuffleIntro: React.FC<ShuffleIntroProps> = ({ onComplete }) => {
           <span className="h-[1px] w-8 bg-amber-500/50" />
         </div>
 
-        <h1 className="font-serif text-3xl md:text-5xl font-black tracking-tight text-white mb-2 whitespace-nowrap">
-          SANTHOSH BALAJI G
+        <h1 className="font-serif text-2xl sm:text-3xl md:text-5xl font-black tracking-tight text-white mb-2 whitespace-nowrap">
+          SANTHOSH&nbsp;BALAJI&nbsp;G
         </h1>
 
         <p className="font-mono text-xs md:text-sm text-slate-300 tracking-wider mb-6">
