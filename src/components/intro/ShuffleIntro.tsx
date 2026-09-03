@@ -310,7 +310,7 @@ export const ShuffleIntro: React.FC<ShuffleIntroProps> = ({ onComplete }) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.6 }}
-        className="text-center z-30 max-w-lg px-4 pb-2"
+        className="text-center z-30 w-full max-w-3xl px-4 pb-2"
       >
         <div className="flex items-center justify-center gap-2 mb-2">
           <span className="h-[1px] w-8 bg-amber-500/50" />
@@ -320,7 +320,7 @@ export const ShuffleIntro: React.FC<ShuffleIntroProps> = ({ onComplete }) => {
           <span className="h-[1px] w-8 bg-amber-500/50" />
         </div>
 
-        <h1 className="font-serif text-3xl md:text-5xl font-black tracking-tight text-white mb-2">
+        <h1 className="font-serif text-3xl md:text-5xl font-black tracking-tight text-white mb-2 whitespace-nowrap">
           SANTHOSH BALAJI G
         </h1>
 
