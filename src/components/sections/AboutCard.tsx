@@ -1,15 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2, Sparkles, MapPin, Mail, Globe, FileText, Download } from 'lucide-react';
+import { CheckCircle2, Sparkles, MapPin, Mail, Globe } from 'lucide-react';
 import { PlayingCard } from '../common/PlayingCard';
 import { PORTFOLIO_DATA } from '../../data/portfolioData';
-import { cardAudio } from '../../utils/soundEffects';
 
-interface AboutCardProps {
-  onOpenCV?: () => void;
-}
-
-export const AboutCard: React.FC<AboutCardProps> = ({ onOpenCV }) => {
+export const AboutCard: React.FC = () => {
   const { profile } = PORTFOLIO_DATA;
 
   const infoChips = [
@@ -135,46 +130,6 @@ export const AboutCard: React.FC<AboutCardProps> = ({ onOpenCV }) => {
                       <span>Email</span>
                     </span>
                     <p className="font-mono text-[10px] text-slate-700 truncate">{profile.email}</p>
-                  </div>
-                </div>
-
-                {/* Official Curriculum Vitae (CV) Access Bar */}
-                <div className="pt-2 border-t border-amber-900/15 flex flex-col sm:flex-row items-center justify-between gap-2 p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/30">
-                  <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-900 flex items-center justify-center">
-                      <FileText className="w-4 h-4" />
-                    </div>
-                    <div className="text-left">
-                      <span className="text-[11px] font-mono font-bold text-slate-900 block leading-tight">Official Curriculum Vitae</span>
-                      <span className="text-[9.5px] font-mono text-slate-600">Verified PDF Resume • Santhosh Balaji G</span>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-2 w-full sm:w-auto">
-                    {onOpenCV && (
-                      <button
-                        onClick={() => {
-                          cardAudio.playGlide();
-                          onOpenCV();
-                        }}
-                        className="flex-1 sm:flex-none px-3 py-1.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 text-[11px] font-mono font-bold transition-all shadow-xs flex items-center justify-center gap-1 cursor-pointer"
-                        data-cursor="CV"
-                      >
-                        <FileText className="w-3 h-3" />
-                        <span>View CV</span>
-                      </button>
-                    )}
-
-                    <a
-                      href="./Santhosh_Balaji_CV.pdf"
-                      download="Santhosh_Balaji_CV.pdf"
-                      onClick={() => cardAudio.playDeal()}
-                      className="flex-1 sm:flex-none px-3 py-1.5 rounded-lg bg-white hover:bg-slate-50 text-slate-900 border border-slate-300 text-[11px] font-mono font-bold transition-all shadow-xs flex items-center justify-center gap-1 cursor-pointer"
-                      title="Download PDF"
-                    >
-                      <Download className="w-3 h-3 text-amber-700" />
-                      <span>Download</span>
-                    </a>
                   </div>
                 </div>
               </div>

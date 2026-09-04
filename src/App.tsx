@@ -3,7 +3,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ShuffleIntro } from './components/intro/ShuffleIntro';
 import { CustomCursor } from './components/common/CustomCursor';
 import { PortfolioBackground } from './components/common/PortfolioBackground';
-import { CVModal } from './components/common/CVModal';
 import { CardNavFan } from './components/nav/CardNavFan';
 import { HeroCard } from './components/sections/HeroCard';
 import { AboutCard } from './components/sections/AboutCard';
@@ -19,7 +18,6 @@ import { FinalDeck } from './components/sections/FinalDeck';
 export const App: React.FC = () => {
   const [introCompleted, setIntroCompleted] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
-  const [isCVModalOpen, setIsCVModalOpen] = useState(false);
 
   // Track active section with IntersectionObserver
   useEffect(() => {
@@ -90,17 +88,15 @@ export const App: React.FC = () => {
           <CardNavFan
             activeSection={activeSection}
             onSelectSection={(id) => scrollToSection(id)}
-            onOpenCV={() => setIsCVModalOpen(true)}
           />
 
           {/* Portfolio Playing Card Sections */}
           <HeroCard
             onExploreDeck={() => scrollToSection('about')}
             onViewProjects={() => scrollToSection('projects')}
-            onOpenCV={() => setIsCVModalOpen(true)}
           />
 
-          <AboutCard onOpenCV={() => setIsCVModalOpen(true)} />
+          <AboutCard />
 
           <SkillsDeck />
 
@@ -114,17 +110,11 @@ export const App: React.FC = () => {
 
           <HobbiesDeck />
 
-          <ContactCard onOpenCV={() => setIsCVModalOpen(true)} />
+          <ContactCard />
 
           <FinalDeck onReshuffle={handleReshuffle} />
         </motion.main>
       )}
-
-      {/* Global Curriculum Vitae (CV) Modal */}
-      <CVModal
-        isOpen={isCVModalOpen}
-        onClose={() => setIsCVModalOpen(false)}
-      />
     </div>
   );
 };

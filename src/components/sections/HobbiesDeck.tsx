@@ -33,7 +33,7 @@ export const HobbiesDeck: React.FC = () => {
         </div>
 
         <p className="text-xs md:text-sm text-slate-400 font-mono tracking-wide mb-8 text-center">
-          Athletic Pursuits & Active Team Sports from CV
+          Athletic Pursuits & Active Team Sports
         </p>
 
         {/* 3 Playful Mini Playing Cards (Standardized Identical Heights) */}

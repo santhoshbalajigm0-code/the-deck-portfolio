@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Layers, ChevronUp, Volume2, VolumeX, FileText } from 'lucide-react';
+import { Layers, ChevronUp, Volume2, VolumeX } from 'lucide-react';
 import { cardAudio } from '../../utils/soundEffects';
 
 interface CardNavFanProps {
   activeSection: string;
   onSelectSection: (id: string) => void;
-  onOpenCV?: () => void;
 }
 
 interface NavCardItem {
@@ -17,7 +16,7 @@ interface NavCardItem {
   color: string;
 }
 
-export const CardNavFan: React.FC<CardNavFanProps> = ({ activeSection, onSelectSection, onOpenCV }) => {
+export const CardNavFan: React.FC<CardNavFanProps> = ({ activeSection, onSelectSection }) => {
   const [isFanned, setIsFanned] = useState(false);
   const [isAudioEnabled, setIsAudioEnabled] = useState(true);
 
@@ -82,22 +81,6 @@ export const CardNavFan: React.FC<CardNavFanProps> = ({ activeSection, onSelectS
             </button>
           ))}
         </div>
-
-        {/* CV Modal Trigger Button */}
-        {onOpenCV && (
-          <button
-            onClick={() => {
-              cardAudio.playGlide();
-              onOpenCV();
-            }}
-            className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-400 text-slate-950 text-xs font-mono font-black shadow-[0_0_12px_rgba(212,175,55,0.4)] hover:shadow-[0_0_20px_rgba(212,175,55,0.7)] hover:scale-105 transition-all cursor-pointer"
-            data-cursor="CV"
-            title="Open & Download CV / Resume"
-          >
-            <FileText className="w-3.5 h-3.5" />
-            <span>CV</span>
-          </button>
-        )}
 
         <button
           onClick={toggleAudio}

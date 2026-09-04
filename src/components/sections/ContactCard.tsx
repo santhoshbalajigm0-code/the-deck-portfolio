@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle2, Copy, FileText } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle2, Copy } from 'lucide-react';
 import { PlayingCard } from '../common/PlayingCard';
 import { PORTFOLIO_DATA } from '../../data/portfolioData';
 import { cardAudio } from '../../utils/soundEffects';
 
-interface ContactCardProps {
-  onOpenCV?: () => void;
-}
-
-export const ContactCard: React.FC<ContactCardProps> = ({ onOpenCV }) => {
+export const ContactCard: React.FC = () => {
   const { profile } = PORTFOLIO_DATA;
   const [copied, setCopied] = useState(false);
 
@@ -142,20 +138,6 @@ export const ContactCard: React.FC<ContactCardProps> = ({ onOpenCV }) => {
                     <Send className="w-4 h-4" />
                     <span>SEND AN EMAIL</span>
                   </a>
-
-                  {onOpenCV && (
-                    <button
-                      onClick={() => {
-                        cardAudio.playGlide();
-                        onOpenCV();
-                      }}
-                      className="flex-1 sm:flex-none px-6 py-3.5 rounded-xl bg-amber-100 hover:bg-amber-200/90 border border-amber-500/60 text-slate-950 font-serif font-bold text-base flex items-center justify-center gap-2.5 shadow-sm hover:scale-105 transition-all cursor-pointer"
-                      data-cursor="CV"
-                    >
-                      <FileText className="w-4 h-4 text-amber-800" />
-                      <span>OPEN / DOWNLOAD CV</span>
-                    </button>
-                  )}
                 </div>
 
                 <span className="text-xs font-mono text-slate-500 text-center sm:text-right">

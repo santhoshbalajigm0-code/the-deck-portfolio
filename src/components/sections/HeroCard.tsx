@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, Eye, ArrowDown, FileText } from 'lucide-react';
+import { Sparkles, Eye, ArrowDown } from 'lucide-react';
 import { PlayingCard } from '../common/PlayingCard';
 import { PORTFOLIO_DATA } from '../../data/portfolioData';
 import { cardAudio } from '../../utils/soundEffects';
@@ -8,10 +8,9 @@ import { cardAudio } from '../../utils/soundEffects';
 interface HeroCardProps {
   onExploreDeck: () => void;
   onViewProjects: () => void;
-  onOpenCV?: () => void;
 }
 
-export const HeroCard: React.FC<HeroCardProps> = ({ onExploreDeck, onViewProjects, onOpenCV }) => {
+export const HeroCard: React.FC<HeroCardProps> = ({ onExploreDeck, onViewProjects }) => {
   const { profile } = PORTFOLIO_DATA;
 
   return (
@@ -104,21 +103,6 @@ export const HeroCard: React.FC<HeroCardProps> = ({ onExploreDeck, onViewProject
                 <Eye className="w-4 h-4 text-amber-700" />
                 <span>VIEW PROJECTS</span>
               </button>
-
-              {onOpenCV && (
-                <button
-                  onClick={() => {
-                    cardAudio.playGlide();
-                    onOpenCV();
-                  }}
-                  className="w-full sm:w-auto px-6 py-3.5 rounded-xl font-serif text-base font-bold text-amber-950 bg-amber-100 hover:bg-amber-200 border border-amber-500/50 shadow-sm hover:scale-105 transition-all flex items-center justify-center gap-2 cursor-pointer"
-                  data-cursor="CV"
-                  title="Open and Download Official Curriculum Vitae"
-                >
-                  <FileText className="w-4 h-4 text-amber-700" />
-                  <span>OPEN CV</span>
-                </button>
-              )}
             </div>
           </div>
         </PlayingCard>
